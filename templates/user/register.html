@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Kullanıcı Kaydı{% endblock %}
+
+{% block content %}
+<main>
+<div class="container py-sm-5">
+<div class="p-5 mb-sm-5 bg-light rounded-3">
+<div class="container-fluid py-sm-5">
+
+<div>
+    <h2 class="mb-3 font-weight-light">Kullanıcı Kaydı</h2>
+    <h6 class="subtitle font-weight-normal">Stok Yönetim Programına kullanıcı hesabı tanımlamak için formu doldurun.</h6>
+    <form action="{% url 'user:register' %}" method="post" class="mt-3">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-lg-12 mt-1">
+                <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Ad Soyad" /></div>
+            </div>
+            <div class="col-lg-12 mt-1">
+                <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email Adresi" /></div>
+            </div>
+            <div class="col-lg-6 mt-1">
+                <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Parola" /></div>
+            </div>
+            <div class="col-lg-6 mt-1">
+                <div class="form-group"><input class="form-control" type="password" name="repassword" placeholder="Parola Onayı" /></div>
+            </div>
+            <div class="col-lg-12 mt-1"><button type="submit" class="btn btn-md btn-block btn-primary border-0"><span>Hesap Oluştur</span></button></div>
+        </div>
+    </form>
+    <div class="row">
+
+        <div class="col-lg-12 text-center mt-4">
+            Zaten kayıtlı kullanıcı iseniz buradan;<a href="{% url 'user:login' %}" class="text-danger"> Giriş Yapın</a></div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</main>
+{% endblock %}

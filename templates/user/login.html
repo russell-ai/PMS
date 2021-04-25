@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Kullanıcı Giriş{% endblock %}
+
+{% block content %}
+<main>
+<div class="container py-sm-3">
+<div class="p-5 mb-sm-4 bg-light rounded-3">
+<div class="container-fluid py-sm-2">
+
+<main class="form-signin">
+  <form action="{% url 'user:login' %}" method="post">
+      {% csrf_token %}
+    <h1 class="h3 mb-3 fw-normal">Lütfen Giriş Yapın</h1>
+
+    <div class="form-floating mb-2">
+      <input type="text" class="form-control" id="floatingInput" name="username" placeholder="Kullanıcı adı">
+      <label for="floatingInput">Kullanıcı adı</label>
+    </div>
+    <div class="form-floating mb-2">
+      <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Parola">
+      <label for="floatingPassword">Parola</label>
+    </div>
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Beni hatırla
+      </label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Giriş</button>
+    <p class="mt-5 mb-3 text-muted">&copy; Stok Yönetim Sistemi v.1.5</p>
+  </form>
+</main>
+
+
+</div>
+</div>
+</div>
+</main>
+{% endblock %}

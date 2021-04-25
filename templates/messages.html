@@ -1,0 +1,18 @@
+<style>
+    .success{
+     list-style: none;
+     background-color: #1b1b44;
+     color: white;
+     box-shadow: 4px 4px 4px #e61c66;
+     text-align: center;
+ }
+</style>
+<div class="container w-100">
+{% if messages %}
+    <ul class="messages w-100">
+    {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+      </ul>
+{% endif %}
+</div>

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %} Stok Yönetimi {% endblock %}
+
+{% block content %}
+<main>
+    <div class="container py-sm-3">
+    <div class="p-5 mb-sm-4 bg-light rounded-3">
+      <div class="container-fluid py-sm-2">
+        <h1 class="display-5 fw-bold">Stok Yönetimi</h1>
+        <p class="col-md-8 fs-4">Stoklarınızın kontrolü sizde olsun..</p>
+        <a href="{% url 'products:product-list' %}" class="btn btn-primary btn-lg" type="button">Stok İşlemleri</a>
+                  <a href="{% url 'products:action-create' %}" class="btn btn-danger btn-lg" type="button">Stok Hareketi</a>
+      </div>
+    </div>
+
+    <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+          <h2>Yeni Ürün Ekle</h2>
+          <p>Stoklarınıza ürün kaydını buradan yapabilirsiniz... </p>
+          <a href="{% url 'products:product-create' %}" class="btn btn-outline-light" type="button">Ürün Ekle</a>
+          <a href="{% url 'products:category-create' %}" class="btn btn-outline-light" type="button">Kategori Ekle</a>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+          <h2>Stok Geçmişi</h2>
+          <p>Geçmiş stok hareketlerine buradan bakabilirsiniz...</p>
+          <a href="{% url 'products:action-list' %}" class="btn btn-outline-light" type="button">Stok Hareketleri</a>
+        </div>
+      </div>
+    </div>
+    </div>
+</main>
+ {% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block title %} Stok Listesi {% endblock %}
+
+{% block content %}
+<main>
+    <div class="container py-sm-3">
+    <div class="p-5 mb-sm-4 bg-light rounded-3">
+      <div class="container-fluid py-sm-1 align-self-center">
+        <h1 class="display-5 fw-bold">Geçmiş Stok Hareketleri</h1>
+        <a href="{% url 'products:product-list' %}" class="btn btn-primary btn-lg" type="button">Stok Listesi</a>
+        <a href="{% url 'products:action-create' %}" class="btn btn-danger btn-lg" type="button">Yeni Stok Hareketi</a>
+      </div>
+       {% comment %} <div class="container-fluid row align-items-end col-auto">
+        <form class="d-flex" method="post">
+                    {% csrf_token %} {{form.as_table}}
+                    <button class="btn btn-success btn-sm" type="submit">Ara</button>
+                </form>
+        </div>{% endcomment %}
+    </div>
+
+<table class="table table-striped table-hover table-sm">
+    <thead class="table-dark">
+        <tr>
+          <th scope="col">S.NO</th>
+          <th scope="col">STOK HAREKETİ</th>
+          <th scope="col">KATEGORİ</th>
+          <th scope="col">ÜRÜN İSMİ</th>
+          <th scope="col">İŞLEM MİKTARI</th>
+          <th scope="col">TARİH-SAAT</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for query in queryset %}
+            <tr>
+              <th scope="row">{{ forloop.counter }}</th>
+              <td >{{ query.action_type | upper }}</td>
+              <td >{{ query.category | title }}</td>
+              <td>{{ query.product_name | capfirst }}</td>
+              <td>{{ query.action_quantity | intcomma}}</td>
+              <td>{{ query.action_date | timesince}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+<div class="pagination pagination-sm">
+    <span class="step-links">
+        {% if queryset.has_previous %}
+            <a href="?page=1">&laquo; ilk</a>
+            <a href="?page={{ queryset.previous_page_number }}">önceki sayfa</a>
+        {% endif %}
+
+        <span class="current page-item active">
+            Sayfa {{ queryset.number }} / {{ queryset.paginator.num_pages }}.
+        </span>
+
+        {% if queryset.has_next %}
+            <a href="?page={{ queryset.next_page_number }}">sonraki sayfa</a>
+            <a href="?page={{ queryset.paginator.num_pages }}">son &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+</div>
+</div>
+</div>
+
+
+</main>
+ {% endblock %}

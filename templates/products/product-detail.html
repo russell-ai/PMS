@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %} {{ title}} {% endblock %}
+
+{% block content %}
+<main>
+    <div class="container py-sm-3">
+    <div class="p-5 mb-sm-4 bg-light rounded-3">
+      <div class="container-fluid py-sm-1">
+        <h1 class="display-5 fw-bold">{{ title }}</h1>
+
+        <a href="{% url 'products:product-list' %}" class="btn btn-primary btn-lg" type="button">Stok Listesi</a>
+        <a href="{% url 'products:action-create' %}" class="btn btn-primary btn-lg" type="button">Stok Ekle/Çık</a>
+      </div>
+    </div>
+
+<table class="table table-striped table-hover table-sm">
+    <thead class="table-dark">
+        <tr>
+          <th scope="col">STOK_NO</th>
+          <th scope="col">KATEGORİ</th>
+          <th scope="col">ÜRÜN İSMİ</th>
+          <th scope="col">STOK DURUMU</th>
+          <th scope="col">AÇIKLAMALAR</th>
+          <th scope="col">STOK SİL</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <th scope="row">{{ queryset.id }}</th>
+          <td >{{ queryset.category }}</td>
+          <td><a href="{% url 'products:product-update' queryset.id %}" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Ürün Güncelle">{{ queryset.product_name }}</a></td>
+          <td>  {{ queryset.quantity}}</td>
+          <td>{{ queryset.content }}</td>
+          <td><a href="{% url 'products:product-delete' queryset.id %}" class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Ürün Sil"><b>X</b></a></td>
+        </tr>
+    </tbody>
+</table>
+
+  </div>
+</main>
+ {% endblock %}

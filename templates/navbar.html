@@ -1,0 +1,53 @@
+{% load crispy_forms_filters %}
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'landing-page' %}">Stok Yönetimi</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'products:product-list' %}">Stokları Gör</a>
+        </li>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Stok İşlemleri
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{% url 'products:product-list' %}">Stok Listele</a></li>
+              <li><a class="dropdown-item" href="{% url 'products:action-create' %}">Stok Girişi-Çıkışı</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{% url 'products:action-list' %}">Stok Hareketleri</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{% url 'products:product-create' %}">Ürün Ekle</a></li>
+              <li><a class="dropdown-item" href="{% url 'products:category-create' %}">Kategori Ekle</a></li>
+          </ul>
+        </li>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Kullanıcı İşlemleri
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{% url 'user:register' %}">Yeni Kullanıcı Ekle</a></li>
+              <li><a class="dropdown-item" href="{% url 'user:password-change' %}">Parola Değiştir</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'user:login' %}">Giriş Yap</a></li>
+            <li><a class="dropdown-item" href="{% url 'user:logout' %}">Çıkış Yap</a></li>
+          </ul>
+        </li>
+      </ul>
+
+
+
+        {% if user.is_authenticated %}
+        <a href="{% url 'user:logout' %}" class="btn btn-outline-danger" type="button">{{ user }} | Çıkış</a>
+        {% else %}
+        <a href="{% url 'user:login' %}" class="btn btn-outline-success" type="button">Giriş</a>
+        {% endif %}
+
+    </div>
+  </div>
+</nav>
+

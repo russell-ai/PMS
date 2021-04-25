@@ -1,0 +1,50 @@
+{% load static %}
+{% load humanize %}
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="PMS v.1.5">
+    <meta name="author" content="Resul ÇALIŞKAN">
+    <meta name="generator" content="Giraffe Analytics Production 2021">
+    <title>{% block title %} Stok Yönetim Sistemi {% endblock %}</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/jumbotron/">
+
+
+
+    <!-- Bootstrap core CSS -->
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/navbar-top-fixed.css' %}" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+
+  </head>
+  <body>
+{% include 'navbar.html' %}
+{% include 'messages.html' %}
+{% block content %} {% endblock %}
+
+    <footer class="pt-3 mt-4 text-muted border-top">
+      &copy; Giraffe Analytics 2021 Production.
+    </footer>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  </body>
+</html>

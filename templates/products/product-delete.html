@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %} {{ title}} {% endblock %}
+
+{% block content %}
+<main>
+    <div class="container py-sm-3">
+    <div class="p-5 mb-sm-4 bg-light rounded-3">
+      <div class="container-fluid py-sm-1">
+        <h1 class="display-5 fw-bold">{{ title }}</h1>
+             <form method="post" action="">
+                {% csrf_token %}
+                <h2>Bu <b>{{ queryset.product_name }}</b> ürünü silmek istediğinizden emin misiniz?</h2><br>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="submit" class="btn btn-danger btn-lg" data-bs-dismiss="modal">Evet</button>
+                <a href="{% url 'products:product-detail' queryset.id %}" type="button" class="btn btn-primary btn-lg">İptal</a>
+            </div>
+        </form>
+      </div>
+
+</main>
+ {% endblock %}
