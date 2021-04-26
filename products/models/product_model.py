@@ -23,7 +23,7 @@ class Category(models.Model):
     class Meta:
         verbose_name = "Kategori"
         verbose_name_plural = "Kategoriler"
-        ordering = ['id']
+        ordering = ['-id']
 
     def __str__(self):
         return self.name

@@ -41,10 +41,46 @@
 {% include 'messages.html' %}
 {% block content %} {% endblock %}
 
-    <footer class="pt-3 mt-4 text-muted border-top">
-      &copy; Giraffe Analytics 2021 Production.
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+    <footer class="pt-3  text-muted border-top">
+        <div class="container ml-1">
+        <button type="button" class="btn btn-dark float-sm-start mx-auto" data-bs-toggle="modal" data-bs-target="#myModal">
+    &copy; Giraffe Analytics 2021 Production.- PMS v.1.5
+        </button>
+        <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Giraffe Analytics</h4>
+                    <h4 class="modal-title">System Information</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="dev-info">
+                      <p class=""><b>STOK YÖNETİM PROGRAMI 2021</b></p>
+                      <p>VERSION: 1.5</p><br>
+
+                      <p class="modal-header"><b>DEVELOPER:</b></p>
+                      <p>R.CALISKAN - G.A. MEMBERS</p>
+                      <p>+90536XXXXXXX </p>
+                      <p class="align-content-center"><img src="{% static 'image/logo.png' %}" alt="Developer Logo"></p>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+      </div>
+  </div>
+        </div>
+
     </footer>
 
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
   </body>
 </html>
